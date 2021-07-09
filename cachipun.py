@@ -2,7 +2,6 @@ import random
 
 class Cachipun:
       
-    
     #Metodo
     def maquina(self):
         #generar 'jugada' aleatoria
@@ -40,8 +39,6 @@ class Cachipun:
 
             print("Maquina:{}".format(resultadoMaquina))
             print("Humano: {}".format(resultadoHumano))
-
-
             #*****************buscar ganador****************************
             #Piedra:
             #Empate humano
@@ -88,7 +85,8 @@ class Cachipun:
 
             repeticiones+=1
 
-            print("Resultado puntos: ")
+            print("\nResultado puntos: ")
+            print("******************************")
             print("Maquina: {}".format(puntosM))
             print("Humano: {}".format(puntosH))
 
