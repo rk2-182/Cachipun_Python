@@ -45,14 +45,17 @@ class Cachipun:
             if resultadoHumano == 'piedra' and resultadoMaquina == 'piedra':
                 puntosH +=1
                 puntosM +=1
+                print("Piedra vs Piedra Empate!")
             #Pierde humano
             elif resultadoHumano == 'piedra' and resultadoMaquina == 'papel':
                 puntosH+=0
                 puntosM+=1
+                print("Piedra vs Papel Gana Papel")
             #Gana humano
             elif resultadoHumano == 'piedra' and resultadoMaquina == 'tijera':
                 puntosH+=1
                 puntosM+=0
+                print("Piedra vs Tijera Gana Piedra!")
             
             #Papel:
             #Gana humano
