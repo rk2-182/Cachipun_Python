@@ -42,7 +42,8 @@ class Cachipun:
             print("Humano: {}".format(resultadoHumano))
 
 
-            #buscar ganador
+            #*****************buscar ganador****************************
+            #Piedra:
             #Empate humano
             if resultadoHumano == 'piedra' and resultadoMaquina == 'piedra':
                 puntosH +=1
@@ -55,6 +56,34 @@ class Cachipun:
             elif resultadoHumano == 'piedra' and resultadoMaquina == 'tijera':
                 puntosH+=1
                 puntosM+=0
+            
+            #Papel:
+            #Gana humano
+            if resultadoHumano == 'papel' and resultadoMaquina == 'piedra':
+                puntosH +=1
+                puntosM +=0
+            #Empate humano
+            elif resultadoHumano == 'papel' and resultadoMaquina == 'papel':
+                puntosH+=1
+                puntosM+=1
+            #Gana maquina
+            elif resultadoHumano == 'papel' and resultadoMaquina == 'tijera':
+                puntosH+=0
+                puntosM+=1
+            
+            #Tijera:
+            #Pierde humano
+            if resultadoHumano == 'tijera' and resultadoMaquina == 'piedra':
+                puntosH +=0
+                puntosM +=1
+            #Gana humano
+            elif resultadoHumano == 'tijera' and resultadoMaquina == 'papel':
+                puntosH+=1
+                puntosM+=0
+            #Empate maquina
+            elif resultadoHumano == 'tijera' and resultadoMaquina == 'tijera':
+                puntosH+=1
+                puntosM+=1
             
 
             repeticiones+=1
