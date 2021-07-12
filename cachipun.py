@@ -14,7 +14,6 @@ class Cachipun:
     puntosH = 0
     puntosM = 0
     pygame.mixer.init()
-    #cancion =playsound('Boss-Fight.mp3')
 
     #Constructor con parametros recibe la cancion a tocar.
     def __init__(self,cancion):
@@ -33,9 +32,9 @@ class Cachipun:
         if self.__jugada == 2:
             return 'tijera'
 
-    def presentacion(self):
+    def presentacion(self,cantidad):
         os.system('cls')
-        print("*********Bienvenido al juego Cachipun Maquina Vs Humano*********")
+        print("*********Bienvenido al juego Cachipun Maquina Vs Humano a {} jugada(s)*********".format(cantidad))
         print("Opciones: ")
 
         print("1.-tijera = ", self.tijera)
@@ -55,14 +54,14 @@ class Cachipun:
         if self.opcionH == 3:
             return 'papel'
 
-    def jugar(self):
+    def jugar(self,jugadas):
         
         repeticiones = 0
-        self.puntosH = 0
-        self.puntosM = 0
+        #self.puntosH = 0
+        #self.puntosM = 0
 
         # 0 reps es menor a 3? si es asi entrar en ciclo
-        while repeticiones < 3:
+        while repeticiones < jugadas:
             print("\nRonda numero #{}".format(repeticiones))
             # guardar en una variable la opcion humana ingresada
             # ejecutamos la funcion humano la cual pedira ingresar por teclado una opcion
@@ -81,8 +80,8 @@ class Cachipun:
             # Piedra:
             # Empate humano
             if resultadoHumano == 'piedra' and resultadoMaquina == 'piedra':
-                self.puntosH += 1
-                self.puntosM += 1
+                self.puntosH += 0
+                self.puntosM += 0
                 time.sleep(0.5)
                 print("Piedra vs Piedra Empate!")
             # Pierde humano
@@ -107,8 +106,8 @@ class Cachipun:
                 print("Papel vs Piedra gana Papel!")
             # Empate humano
             elif resultadoHumano == 'papel' and resultadoMaquina == 'papel':
-                self.puntosH += 1
-                self.puntosM += 1
+                self.puntosH += 0
+                self.puntosM += 0
                 time.sleep(0.5)
                 print("Papel vs Papel Empate!")
             # Gana maquina
@@ -133,8 +132,8 @@ class Cachipun:
                 print("Tijera vs papel gana Tijera!")
             # Empate maquina
             elif resultadoHumano == 'tijera' and resultadoMaquina == 'tijera':
-                self.puntosH += 1
-                self.puntosM += 1
+                self.puntosH += 0
+                self.puntosM += 0
                 time.sleep(0.5)
                 print("Tijera vs tijera Empate!")
 
@@ -146,6 +145,19 @@ class Cachipun:
             print("Humano: {}".format(self.puntosH))
             print("Maquina: {}".format(self.puntosM))
 
+
+            #Evaludar si algun jugador ya va 2 a 0 terminando el bucle por reglas del juego.
+            if self.puntosM >=2 and self.puntosH == 0:
+                #self.ganador()
+                break
+            if self.puntosH >=2 and self.puntosM == 0:
+                #self.ganador()
+                break
+        
+        return jugadas
+           
+
+
     def ganador(self):
         if self.puntosH > self.puntosM:
             print("Enhorabuena Humano haz ganado!")
@@ -153,12 +165,22 @@ class Cachipun:
             print("Maquina a ganado, Jajaja >:)")
         else:
             print("Han Empatado!")
+
+        if self.puntosH == self.puntosM:
+            print("*****Desempate a muerte!*****")
+            self.jugar(1)
+            self.ganador()
+
             
         
 # =========Crear objeto de la clase cachipun=========
 maquina = Cachipun('Boss-Fight.mp3')
-maquina.presentacion()
-maquina.jugar()
+os.system('cls')
+jugadas = int(input("A la primera o tercera? (1 o 3): "))
+
+maquina.presentacion(jugadas)
+cantidad_jugadas = maquina.jugar(jugadas)
+#maquina.jugar(3)
 maquina.ganador()
 
 input("PRESIONE ENTER PARA SALIR")
