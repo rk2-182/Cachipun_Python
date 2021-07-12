@@ -45,7 +45,7 @@ class Cachipun:
 
     def humano(self):
         time.sleep(2)
-        self.opcionH = int(input("\nIngrese su opcion: (1={},2={},3={})".format(
+        self.opcionH = int(input("Ingrese su opcion: (1={},2={},3={})".format(
             self.tijera, self.piedra, self.papel)))
 
         if self.opcionH == 1:
@@ -63,7 +63,7 @@ class Cachipun:
 
         # 0 reps es menor a 3? si es asi entrar en ciclo
         while repeticiones < 3:
-            
+            print("\nRonda numero #{}".format(repeticiones))
             # guardar en una variable la opcion humana ingresada
             # ejecutamos la funcion humano la cual pedira ingresar por teclado una opcion
             resultadoHumano = self.humano()
@@ -71,26 +71,31 @@ class Cachipun:
             # guardar en una variable el resultado aleatorio de la maquina
             # se ejecuta la opcion maquina y esta aleatoriamente generara su opcion
             resultadoMaquina = self.maquina()
-
-            print("Humano: {}".format(resultadoHumano))
-            print("Maquina:{}".format(resultadoMaquina))
+          
+            print("Humano a jugado: {}".format(resultadoHumano))
+          
+            print("Maquina a jugado:{}".format(resultadoMaquina))
 
             # *****************buscar ganador****************************
+
             # Piedra:
             # Empate humano
             if resultadoHumano == 'piedra' and resultadoMaquina == 'piedra':
                 self.puntosH += 1
                 self.puntosM += 1
+                time.sleep(0.5)
                 print("Piedra vs Piedra Empate!")
             # Pierde humano
             elif resultadoHumano == 'piedra' and resultadoMaquina == 'papel':
                 self.puntosH += 0
                 self.puntosM += 1
+                time.sleep(0.5)
                 print("Piedra vs Papel Gana Papel")
             # Gana humano
             elif resultadoHumano == 'piedra' and resultadoMaquina == 'tijera':
                 self.puntosH += 1
                 self.puntosM += 0
+                time.sleep(0.5)
                 print("Piedra vs Tijera Gana Piedra!")
 
             # Papel:
@@ -98,39 +103,46 @@ class Cachipun:
             if resultadoHumano == 'papel' and resultadoMaquina == 'piedra':
                 self.puntosH += 1
                 self.puntosM += 0
+                time.sleep(0.5)
                 print("Papel vs Piedra gana Papel!")
             # Empate humano
             elif resultadoHumano == 'papel' and resultadoMaquina == 'papel':
                 self.puntosH += 1
                 self.puntosM += 1
+                time.sleep(0.5)
                 print("Papel vs Papel Empate!")
             # Gana maquina
             elif resultadoHumano == 'papel' and resultadoMaquina == 'tijera':
                 self.puntosH += 0
                 self.puntosM += 1
+                time.sleep(0.5)
                 print("Papel vs tijera gana Tijera!")
+
             # Tijera:
             # Pierde humano
             if resultadoHumano == 'tijera' and resultadoMaquina == 'piedra':
                 self.puntosH += 0
                 self.puntosM += 1
+                time.sleep(0.5)
                 print("Tijera vs Piedra gana Piedra!")
             # Gana humano
             elif resultadoHumano == 'tijera' and resultadoMaquina == 'papel':
                 self.puntosH += 1
                 self.puntosM += 0
+                time.sleep(0.5)
                 print("Tijera vs papel gana Tijera!")
             # Empate maquina
             elif resultadoHumano == 'tijera' and resultadoMaquina == 'tijera':
                 self.puntosH += 1
                 self.puntosM += 1
+                time.sleep(0.5)
                 print("Tijera vs tijera Empate!")
 
             repeticiones += 1
 
             time.sleep(2)
             print("\nResultado puntos: ")
-            print("******************************")
+            print("______________________________")
             print("Humano: {}".format(self.puntosH))
             print("Maquina: {}".format(self.puntosM))
 
@@ -149,6 +161,7 @@ maquina.presentacion()
 maquina.jugar()
 maquina.ganador()
 
+input("PRESIONE ENTER PARA SALIR")
 print("Fin")
 
 
