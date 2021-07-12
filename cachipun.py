@@ -13,6 +13,7 @@ class Cachipun:
     piedra = chr(9994)
     puntosH = 0
     puntosM = 0
+    repeticiones = 0
     pygame.mixer.init()
 
     #Constructor con parametros recibe la cancion a tocar.
@@ -56,13 +57,13 @@ class Cachipun:
 
     def jugar(self,jugadas):
         
-        repeticiones = 0
+        self.repeticiones = 1
         #self.puntosH = 0
         #self.puntosM = 0
 
         # 0 reps es menor a 3? si es asi entrar en ciclo
-        while repeticiones < jugadas:
-            print("\nRonda numero #{}".format(repeticiones))
+        while self.repeticiones <=jugadas:
+            print("\nRonda numero #{}".format(self.repeticiones))
             # guardar en una variable la opcion humana ingresada
             # ejecutamos la funcion humano la cual pedira ingresar por teclado una opcion
             resultadoHumano = self.humano()
@@ -137,7 +138,7 @@ class Cachipun:
                 time.sleep(0.5)
                 print("Tijera vs tijera Empate!")
 
-            repeticiones += 1
+            self.repeticiones += 1
 
             time.sleep(2)
             print("\nResultado puntos: ")
@@ -183,6 +184,7 @@ cantidad_jugadas = maquina.jugar(jugadas)
 #maquina.jugar(3)
 maquina.ganador()
 
+print("**********************************************************************************")
 input("PRESIONE ENTER PARA SALIR")
 print("Fin")
 
