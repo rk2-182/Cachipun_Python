@@ -1,8 +1,12 @@
-import random
+import random,time,os
 
 class Cachipun:
-      
-    #Metodo
+
+    tijera = chr(9996)
+    papel = chr(9995)
+    piedra = chr(9994)
+
+    #Metodos
     def maquina(self):
         #generar 'jugada' aleatoria
         self.__jugada = random.randrange(0,3) #atributo privado
@@ -13,9 +17,21 @@ class Cachipun:
         if self.__jugada == 2:
             return 'tijera'
 
+
+
+    def presentacion(self):
+        os.system('cls')
+        print("*********Bienvenido al juego Cachipun Maquina Vs Humano*********")
+        print("Opciones: ")
+       
+        print("tijera = ",self.tijera)
+        print("papel = ",self.papel)
+        print("piedra = ",self.piedra)
+
+
     def humano(self):
-     
-        self.opcionH = int(input("Ingrese su opcion: (1=tijera,2=piedra,3=papel)"))
+       
+        self.opcionH = int(input("\nIngrese su opcion: (1={},2={},3={})".format(self.tijera,self.piedra,self.papel)))
 
         if self.opcionH == 1:
             return 'tijera'
@@ -39,6 +55,7 @@ class Cachipun:
 
             print("Maquina:{}".format(resultadoMaquina))
             print("Humano: {}".format(resultadoHumano))
+            time.sleep(1)
             #*****************buscar ganador****************************
             #Piedra:
             #Empate humano
@@ -97,6 +114,8 @@ class Cachipun:
 #=========Crear objeto de la clase cachipun=========
 maquina = Cachipun()
 
+
+maquina.presentacion()
 maquina.jugar()
 
 print("Fin")
