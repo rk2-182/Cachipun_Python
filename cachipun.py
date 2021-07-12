@@ -16,11 +16,12 @@ class Cachipun:
     pygame.mixer.init()
     #cancion =playsound('Boss-Fight.mp3')
 
-    """
+    #Constructor con parametros recibe la cancion a tocar.
     def __init__(self,cancion):
-        self.cancion = playsound(cancion)
-        #self.cancion =playsound('Boss-Fight.mp3')
-    """
+        
+        pygame.mixer.music.load(cancion)
+        pygame.mixer.music.play(loops=-1) #loop infinito con -1
+    
     # Metodos
     def maquina(self):
         # generar 'jugada' aleatoria
@@ -43,7 +44,7 @@ class Cachipun:
         
 
     def humano(self):
-        time.sleep(1)
+        time.sleep(2)
         self.opcionH = int(input("\nIngrese su opcion: (1={},2={},3={})".format(
             self.tijera, self.piedra, self.papel)))
 
@@ -54,9 +55,8 @@ class Cachipun:
         if self.opcionH == 3:
             return 'papel'
 
-    def jugar(self,cancion):
-        pygame.mixer.music.load(cancion)
-        pygame.mixer.music.play(loops=0)
+    def jugar(self):
+        
         repeticiones = 0
         self.puntosH = 0
         self.puntosM = 0
@@ -128,7 +128,7 @@ class Cachipun:
 
             repeticiones += 1
 
-            time.sleep(1)
+            time.sleep(2)
             print("\nResultado puntos: ")
             print("******************************")
             print("Humano: {}".format(self.puntosH))
@@ -144,9 +144,9 @@ class Cachipun:
             
         
 # =========Crear objeto de la clase cachipun=========
-maquina = Cachipun()
+maquina = Cachipun('Boss-Fight.mp3')
 maquina.presentacion()
-maquina.jugar('Boss-Fight.mp3')
+maquina.jugar()
 maquina.ganador()
 
 print("Fin")
