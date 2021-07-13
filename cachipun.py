@@ -44,7 +44,7 @@ class Cachipun:
         
 
     def humano(self):
-        time.sleep(2)
+        time.sleep(1)
         self.opcionH = int(input("Ingrese su opcion: (1={},2={},3={})".format(
             self.tijera, self.piedra, self.papel)))
 
@@ -142,7 +142,7 @@ class Cachipun:
 
             time.sleep(2)
             print("\nResultado puntos: ")
-            print("______________________________")
+            print("==============================")
             print("Humano: {}".format(self.puntosH))
             print("Maquina: {}".format(self.puntosM))
 
@@ -187,6 +187,7 @@ maquina.ganador()
 print("**********************************************************************************")
 input("PRESIONE ENTER PARA SALIR")
 print("Fin")
+exit()
 
 
 
